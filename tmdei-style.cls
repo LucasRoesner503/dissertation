@@ -355,8 +355,8 @@ KOMA-script documentation for details.}]{fancyhdr}
 	{\Large \bfseries \dissertationdisclamer~\subjectname}
 	\end{center}
 	\vfill
-	{\large \bfseries \noindent \advisorlabel: \advname } \\
-	\ifdefined\cosupname {\large \bfseries \coadvisorlabel: \coadvname} \\ \fi
+	%{\large \bfseries \noindent \advisorlabel: \advname } \\
+	%\ifdefined\cosupname {\large \bfseries \coadvisorlabel: \coadvname} \\ \fi
 	{\large \bfseries \noindent \supervisorlabel: \supname } \\
 	\ifdefined\cosupname {\large \bfseries \cosupervisorlabel: \cosupname} \\ \fi
 	\vfill
