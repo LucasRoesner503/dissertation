@@ -35,11 +35,54 @@ The final tool will implement a variety of multiclass balancing strategies, incl
 \section{Methodology}
 \label{sec:chap1_methodology}
 
+The work conducted in this dissertation can be divided into two main components: the research component, which primarily supports the literature review presented in Chapter 2, and the development component, which encompasses the implementation of the proposed solution detailed in Chapters 3 and 4. Each component followed a specific methodology appropriate to its objectives and scope. The following sections describe these methodologies in detail, highlighting the procedures, tools, and reasoning that guided both the theoretical research and the practical development phases of the project.
+
+\subsection{Research Methodology}
+\label{subsec:chap1_research_methodology}
+
+The literature reviewed in this dissertation focuses on the stage of the machine learning dedicated to model training through dataset processing. Specifically, it examines this stage in the context of real-world scenarios where datasets are imbalanced, containing multiple classes with significantly fewer data points compared to dominant majority classes. The objective is to contextualize the effects of class imbalance on model training, exploring methods for re-balancing data, classification, and different metrics to analyze the performance and accuracy of the training. This investigation touched on several key topics, including:
+
+%list of items tackled:
+\begin{itemize}
+    \item \textbf{Imbalanced datasets}: This section presents an initial examination of class imbalance and its impact on the performance of machine learning models. It compares the accuracy of models trained with balanced and imbalanced datasets to demonstrate the degradation caused by unequal class distributions. In addition, it reviews multiple studies across various professional domains, highlighting different strategies that have been adopted to mitigate the effects of imbalance learning.
+
+    \item \textbf{Balancing methods}: This section explores the two main categories of data balancing techniques, under-sampling and oversampling, while examining their most common implementations. It provides an overview of several commonly used methods, including \textit{SMOTE} variants, \textit{MDO}, \textit{MLSMOTE}, and \textit{ADASYN}, among others, detailing how each approach achieves improved class representation.
+
+    \item \textbf{Classification algorithms}: This section discusses several classification algorithms applied to imbalanced datasets, identifying their advantages and potential drawbacks, depending on the characteristics of the dataset. Algorithms such as \textit{Random Forest}, \textit{AdaBoost}, \textit{XGBoost}, \textit{LightGBM}, \textit{MLP}, and \textit{One-versus-Rest} variants are examined in terms of their suitability for handling multi-class imbalance and their comparative performance under different conditions.
+
+    \item \textbf{Meta-learning}: A dedicated section investigates meta-learning approaches relevant to the development of the recommendation module in the proposed solution, focusing on how meta-learning techniques can support the automated selection of balancing and classification strategies based on dataset properties and prior experimental outcomes.
+
+    \item \textbf{Evaluation metrics}: This section analyzes multiple evaluation metrics to determine the most appropriate combination of metrics for reliable model assessment in the context of model training with imbalanced datasets, where a single metric is insufficient to accurately assess performance.
+
+\end{itemize}
+
+All referenced and reviewed papers were obtained from popular academic databases, including \textit{ResearchGate}, \textit{Springer}, and \textit{Google Scholar}. The selection prioritized peer-reviewed publications released within the past five years that demonstrated academic relevance and impact, with citation numbers used as the main metric to determine relevance. Targeted search queries were formulated to limit the scope of the  results, with key phrases such as "Imbalanced dataset handling" and "classification problems with imbalanced learning." being used.
+
+\subsection{Development Methodology}
+\label{sebsec:chap1_development_methodology}
+
+
 \section{Critical Analysis}
 \label{sec:chap1_analytical_critical_and_ethical_analysis}
 
 \section{Structure of the document}
 \label{sec:chap1_structure_of_the_document}
 
+The dissertation is organized into five chapters, each addressing a specific component of the research and development process. The first chapter introduces the overall context and the central problem explored in the study. It defines the primary development objective, outlines the methodology adopted for both research and implementation, and includes a critical analysis of the necessity and potential impact of the proposed tool. This chapter also establishes the foundation upon which subsequent chapters are built, ensuring a coherent transition from problem identification to solution development.
+
+The second chapter presents a comprehensive literature review covering the fundamental topics relevant to the dissertation. It begins by discussing datasets and the distinctions between binary and multiclass configurations, emphasizing how data distribution impacts model learning. The chapter proceeds to examine hyperparameter optimization, describing its role in improving model performance and the techniques used for its adjustment. A detailed analysis of data balancing follows, explaining oversampling and under-sampling methods, along with the most widely used techniques in each category and their practical implications. Further sections explore classification algorithms, highlighting their behavior under imbalanced conditions and comparing their suitability for different types of datasets. Finally, a section to explore potential evaluation metrics, addressing the importance of using multiple measures to ensure a reliable and comprehensive assessment of model performance.
+
+The third chapter focuses on the practical development of the proposed tool. It describes the selection and preparation of datasets, the implementation of balancing methods, and the integration of classification algorithms. This chapter also includes an analysis of the interaction between balancing methods and classifiers, with the aim of identifying optimal combinations for datasets with distinct characteristics. The development of the learning module, which incorporates these insights into the tool’s recommendation logic, is also detailed. This chapter serves as the technical core of the dissertation, linking theoretical knowledge with applied software development.
+
+The fourth chapter presents the evaluation and analysis of the results. It outlines the performance metrics adopted for validation, including those used to assess time efficiency and accuracy. Comparative analyses are conducted between the developed tool and existing solutions, demonstrating the tool’s ability to improve classification outcomes while maintaining accuracy. The discussion also reflects on the trade-offs observed during experimentation and interprets the significance of the obtained results in relation to the initial objectives.
+
+The final chapter provides the conclusion of the dissertation, summarizing the findings and assessing whether the enhanced tool delivers measurable improvements over existing approaches. It also reflects on the broader implications of the results, identifies limitations encountered during the study, and suggests potential directions for future research and tool refinement.
+
 \section{Use of AI-generated content}
 \label{sec:chap1_use_of_ai_generated_content}
+
+To ensure compliance with the guidelines established by PREPD and DIMEI regarding the use of AI-generated content, this section outlines the use of AI during the development of the project and its specific purposes. The use of AI was restricted to grammatical and orthographic revision during the preparation of this document. ChatGPT was employed for proofreading selected text segments to enhance clarity and maintain consistency and structured writing.
+
+The goal was to achieve writing that was free of mistakes and followed good conventions for academic writing. As such, for each instance of proofreading, the prompt was preceded by a defined set of rules intended to restrict the tool’s scope of assistance and ensure controlled outcomes. These criteria, established by the author, are as follow: use of assertive language, simple vocabulary, active voice, while avoiding adjectives, synonyms, imprecise expressions, and repetition. 
+
+All AI-assisted outputs were manually reviewed by the author to ensure that the original meaning was preserved and that no factual errors or hallucinated content were introduced. It is important to emphasize that all ideas, analyses, methodologies, development processes, and interpretation of results presented in this dissertation were entirely conceived and executed by the author, independent of AI assistance.
