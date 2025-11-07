@@ -60,10 +60,37 @@ All referenced and reviewed papers were obtained from popular academic databases
 
 \subsection{Development Methodology}
 \label{sebsec:chap1_development_methodology}
+The methodology selected for the development section of the dissertation is \textit{Cross Industry Standard Process for Data Mining} (CRISP-DM), a commonly used methodology for data mining and data science projects that proposes the use of multiple sequential phases to guide the project from initial understanding to deployment. This methodology was selected due to its ease of implementation, adaptability to the project context, and its established use in both academic and professional settings (\cite{DataSciencePM_CrispDM2}). 
+
+This section provides a detailed description of each CRISP-DM phase (\cite{Shearer2000}) and illustrates how these phases are applied within the context of the proposed solution, each phase and how they connect to each other can be seen in figure \ref{fig:crispdm_diagram}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{ch1/assets/CRISPDM}
+\caption[CRSIP-DM Process Diagram]{CRSIP-DM Process Diagram.}
+\label{fig:crispdm_diagram}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Business Understanding:} This phase focuses on defining the project objectives and requirements from a practical perspective. It identifies the problem to be addressed, and converts this knowledge into a data mining problem, allowing a definition of necessary goals that need to be achieved. In the context of this dissertation, this involves understanding the limitations of existing solutions for imbalanced multiclass classification and defining the scope for developing the tool.
+
+    \item \textbf{Data Understanding:} This phase involves the initial collection and examination of datasets to gain insight into their structure, quality, and potential issues, in this phase, all data collected should go through a verification process to guarantee the data's quality. For this project, this phase centers on finding suitable datasets, that are in multiple levels of imbalance, with different numbers of classes, data amount and parameters specifications, which will help cover a comprehensive number of scenarios that will be used for training the recommendation engine.
+
+    \item \textbf{Data Preparation:} This phase encompasses all tasks required to prepare the datasets used for modeling, such as cleaning, transforming, and organizing the data. In the context of this solution, this phase focuses on integrating multiple balancing methods and classification algorithms, and processing all extracted datasets through all possible combinations. the resulting metrics will be combined with the dataset's characteristics to fill the knowledge base.
 
 
-\section{Critical Analysis}
-\label{sec:chap1_analytical_critical_and_ethical_analysis}
+    \item \textbf{Modeling:} This phase focuses on developing and training the recommendation engine that forms the core of the proposed solution. The engine is trained using the knowledge base obtained in the data preparation. Through this process, relationships between dataset parameters and optimal method combinations are learned, enabling the system to recommend suitable balancing strategies and classifiers for new datasets. This phase also involves fine-tuning the learning logic to improve the accuracy and reliability of the recommendations.
+
+
+    \item \textbf{Evaluation:} This phase focuses on evaluating the performance of the trained recommendation engine against the defined metrics, to see if the generated recommendations align with the expected outcomes and whether the system can consistently identify effective combinations of balancing methods and classifiers.
+
+    \item \textbf{Deployment:} This phase typically represents the stage where a finalized version of the developed solution is deployed or made available for use. In the context of this solution, however, it will serve as a stage for consolidating, documenting, and analyzing the outcomes of the previous phases. The development chapters of this dissertation will act as the medium for reporting all findings, analyses, and insights obtained from this phase.
+
+\end{itemize}
+
+
+Alongside CRISP-DM, \textit{Scrum} methodology will be implemented as an agile approach to project management, with monthly sprints being used to organize and plan the work tasks. At the conclusion of each sprint, a meeting with the dissertation supervisor will be conducted to review progress, gather feedback, and adjust the objectives and priorities for the following sprint as required.
+
 
 \section{Structure of the document}
 \label{sec:chap1_structure_of_the_document}
