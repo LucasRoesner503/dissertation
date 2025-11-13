@@ -16,49 +16,18 @@ The first section presents a general review of the literature to explore the imp
 
 % Talk about overfitting and underfitting
 
-
-\section{Class Imbalance problems}
-
-%  give an introduction to the three main balancing approaches: algorithmic approach, data preprocessing approach, feature selection approach. Show table of each approach type and some exemple methods. Talk about techniques of balancing like Over or Underssampling.
-
-With the rapid expansion of artificial intelligence applications in recent years, the use of machine learning models has become widespread across multiple professional domains. As these applications diversify, the datasets used in each area vary significantly in composition, quality, and distribution. In many cases, certain events or classes occur far less frequently than others, creating disproportionate class representation. For instance, in bioengineering analysis, a dataset may predominantly represent a “Healthy” class, while only a few samples correspond to a specific condition such as “Heart condition.” In such scenarios, machine learning models are often most valuable when they can accurately identify and classify these underrepresented cases, which makes their recognition essential for achieving meaningful results.
-
-Class imbalance refers to this unequal representation of classes within a dataset. The class containing the largest number of samples is known as the \textit{majority class}, while the less frequent ones are referred to as \textit{minority class}. The imbalance may range from mild, where the difference in representation is moderate, to severe, where the majority class overwhelmingly dominates the dataset.
-
-When training classification algorithms, the greater the imbalance, the more difficult it becomes for the model to learn the characteristics of minority classes. Classifiers inherently tend to favor the majority class, leading to biased predictions and reduced accuracy for the minority classes. As a result, the model may fail to correctly identify rare cases, instead assigning most predictions to the majority class. This behavior is particularly problematic in fields where minority classes represent the most critical scenarios, such as the aforementioned bioengineering datasets, where the accurate detection of these rare events such as identifying anomalies or diseases is often the primary objective.
-
-To ensure that classification models produce accurate and unbiased results, various balancing methods have been developed to modify dataset distributions by adding, removing, or adjusting samples. These techniques aim to achieve a more uniform representation of all classes, allowing models to better learn the characteristics of minority classes and improve overall predictive performance. Figure \ref{fig:imbalance-learning-techniques}.  illustrates the different balancing approaches discussed in the following subsections.
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\linewidth]{ch2/assets/Taxonomy-of-imbalance-learning-techniques.png}
-    \caption[Taxonomy-of-imbalance-learning-techniques]{Imbalanced Learning Methods.}
-    \label{fig:imbalance-learning-techniques}
-\end{figure}
-
-\subsection{Data Level Methods}
-
-Data-level methods focus on techniques designed to modify the dataset distribution either by increasing the number of samples in minority classes, referred to as oversampling, or by reducing the number of samples in majority classes, referred to as under sampling. Both approaches aim to achieve a more balanced dataset that allows classification algorithms to better learn the characteristics of all classes. The following subsections will describe each method in detail, outlining their underlying mechanisms, advantages, and potential limitations, as well as combined methods that use both over and under sampling to achieve balanced class representation.
-
-\subsubsection{Over Sampling}
-
-%Explain how it works, give examples, mention smore, adasyn and other methods, explain positives, negatives, mention possible overfitting
-
-Over Sampling refers to the method of adding more samples of minority classes in order to achieve equal representation between classes and allow for classification algorithms that tend to be bias to majority classes to properly identify minority classes. 
-
-One method of over sampling is random oversampling, where minority classes are ramdomly duplicated without any alteration to it until the dataset is balanced.
-Another method is S
-
-
-\subsubsection{Under Sampling}
-
-%Explain how it works, give examples
-
-\subsubsection{Combined Methods}
-
 \section{Classification}
 
 % introduction of the idea of classification, mentions the existance of different types of classifications depending on dataset, include explanation for binary classifications, multi-class for single label, and multi-class for multiple labels. Show graphs of both how classification works and how different classification relate to each other. Mention that single class won't be the focus of the dissertation.
+
+% mention the transformation of multi-class problems into multiple binary ones. \cite{lango2022multiclass}
+
+Classification in machine learning refers to the application of supervised learning algorithms that group data into predefined classes based on shared characteristics (\cite{IBM2025_classificationML}). These algorithms use labeled training data to predict unseen instances with similar features, supporting tasks such as image recognition, sentiment analysis, and domain-specific applications in finance and healthcare among others.
+
+For example, consider a dataset containing banking transaction records. To train a model, the data is first preprocessed to address imbalance issues, such as generating additional samples for underrepresented classes like fraudulent transactions and removing overrepresented ones such as common payments, while preserving class boundaries as explained in Section \ref{chap:Chapter2:classImbalanceProblems}. The processed dataset is then used in a supervised classification method that groups similar samples into labeled categories. After training, the model learns to recognize data patterns associated with specific labels and can assign appropriate labels to new, unseen transactions, such as recognizing new fraudulent transaction attemps (\cite{ChakrabortyDey2024}).
+
+
+
 
 \subsection{Multi-Class Single Label Classification}
 
@@ -74,6 +43,94 @@ Another method is S
 
 % show and explain how reworked versions of common algorithmns can be used for multi label
 
-\section{Meta-Learning}
 
-\section{Metrics}
+\section{Class Imbalance problems}
+\label{chap:Chapter2:classImbalanceProblems}
+%  give an introduction to the three main balancing approaches: algorithmic approach, data preprocessing approach, feature selection approach. Show table of each approach type and some exemple methods. Talk about techniques of balancing like Over or Underssampling.
+
+With the rapid expansion of artificial intelligence applications in recent years, the use of machine learning models has become widespread across multiple professional domains. As these applications diversify, the datasets used in each area vary significantly in composition, quality, and distribution. In many cases, certain events or classes occur far less frequently than others, creating disproportionate class representation. For instance, in bioengineering analysis, a dataset may predominantly represent a “Healthy” class, while only a few samples correspond to a specific condition such as “Skin cancer.” In such scenarios, machine learning models are often most valuable when they can accurately identify and classify these underrepresented cases, which makes their recognition essential for achieving meaningful results.
+
+Class imbalance refers to this unequal representation of classes within a dataset. The class containing the largest number of samples is known as the \textit{majority class}, while the less frequent ones are referred to as \textit{minority class}. The imbalance may range from mild, where the difference in representation is moderate, to severe, where the majority class overwhelmingly dominates the dataset.
+
+When training classification algorithms, the greater the imbalance, the more difficult it becomes for the model to learn the characteristics of minority classes. Classifiers inherently tend to favor the majority class, leading to biased predictions and reduced accuracy for the minority classes. As a result, the model may fail to correctly identify rare cases, instead assigning most predictions to the majority class. This behavior is particularly problematic in fields where minority classes represent the most critical scenarios, such as the aforementioned bioengineering datasets, where the accurate detection of these rare events such as identifying anomalies or diseases is often the primary objective.
+
+To ensure that classification models produce accurate and unbiased results, various balancing methods have been developed to modify dataset distributions by adding, removing, or adjusting samples. These techniques aim to achieve a more uniform representation of all classes, allowing models to better learn the characteristics of minority classes and improve overall predictive performance. Figure \ref{fig:imbalance-learning-techniques}.  illustrates the different balancing approaches discussed in the following subsections.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{ch2/assets/Taxonomy-of-imbalance-learning-techniques.png}
+    \caption[Taxonomy-of-imbalance-learning-techniques]{Imbalanced Learning Methods. (\cite{ResearchGate2025})}
+    \label{fig:imbalance-learning-techniques}
+\end{figure}
+
+\subsection{Data Level Approaches}
+
+Data-level methods focus on techniques designed to modify the dataset distribution either by increasing the number of samples in minority classes, referred to as oversampling, or by reducing the number of samples in majority classes, referred to as under sampling. Both approaches aim to achieve a more balanced dataset that allows classification algorithms to better learn the characteristics of all classes. The following subsections will describe each method in detail, outlining their underlying mechanisms, advantages, and potential limitations, as well as combined methods that use both over and under sampling to achieve balanced class representation.
+
+\subsubsection{Over Sampling}
+
+%Explain how it works, give examples, mention smore, adasyn and other methods, explain positives, negatives, mention possible overfitting
+
+Over Sampling refers to the method of adding more samples of minority classes in order to achieve equal representation between classes and allow for classification algorithms that tend to be bias to majority classes to properly identify minority classes. 
+
+
+
+\begin{itemize}
+    \item \textbf{Random Over Sampling}: Random sampling is a technique in which samples from the minority class are randomly selected and duplicated without modification until the dataset reaches a relatively balanced state. While this method is simple and effective in reducing class imbalance, the new sample it creates do not contain any new information regarding it's minority class. Instead, it amplifies specific samples of the class, which can lead to overfitting by causing the model to learn narrow patterns that fail to generalize, which would reduce it's overall accuracy.
+
+    \item \textbf{SMOTE}: \textit{Synthetic Minority Oversampling Technique} (SMOTE) differs from random sampling by generating synthetic samples rather than duplicating existing ones. The method selects a sample from the minority class and identifies its \textit{k} nearest neighbors. Based on these neighbors, new samples are interpolated within the defined feature space. This approach produces new data points that remain within the minority class region, with the goal of reduce the imbalance ratio, a ratio for majority to minority samples. A key limitation of SMOTE lies in its sensitivity to the distribution of neighboring points. When neighbors are too distant or in insufficient amounts, the generated samples may introduce noise, fall outside the minority class boundaries or increase the risk of overfitting (\cite{Chawla2002}).
+    
+    \item \textbf{ADASYN}: \textit{The Adaptive Synthetic} (ADASYN) method introduces an adaptive approach to generating synthetic samples compared to SMOTE. Its main distinction lies in the way it distributes newly generated samples among the minority classes. ADASYN focuses on creating more synthetic samples for minority instances that are harder to learn, while producing fewer samples for those that are easier to classify. The difficulty level is determined by calculating the number of nearest neighbors belonging to the majority class, and a proportional ratio is then applied to quantify how difficult each minority instance is to learn. This adaptive mechanism enables the model to emphasize more complex decision regions, leading to improved learning balance across classes (\cite{He2008}).
+
+    
+\end{itemize}
+
+The use of oversampling can be beneficial, as it provides a straightforward way to generate additional samples that help mitigate dataset imbalance and reduce the bias that classification algorithms exhibit toward majority classes. However, oversampling also introduces certain drawbacks. The expansion of the dataset increases computational cost during training, and synthetic samples may lead to overfitting (\cite{Ying_2019}), a scenario in which the model learns patterns specific to the generated data rather than generalizable characteristics of the minority class. Consequently, this may cause misclassifications of real minority samples and a reduction in overall model performance when applied to unseen data.
+
+\subsubsection{Under Sampling}
+
+%Explain how it works, give examples
+Under sampling refers to the method of reducing the number of samples from the majority class in imbalanced datasets to achieve a more balanced class distribution. This approach aims to mitigate the bias introduced by overrepresented classes, allowing the learning algorithm to focus more effectively on minority classes (\cite{MastersInDataScience_Undersampling}).
+
+\begin{itemize}
+    \item \textbf{Random Under Sampling}: \textit{Random Under Sampling} is a technique where samples from the majority class are randomly removed until the dataset reaches an acceptable level of balance (\cite{Japkowicz2002}). While this approach reduces training time and simplifies the dataset, it can also introduce drawbacks. The random elimination of samples may result in the loss of important information or class-defining characteristics, weakening the model’s classification performance.
+    
+    \item \textbf{Editing Nearest Neighbor}: The \textit{Editing Nearest Neighbor} (ENN) method looks for the \textit{k} nearest neighbors of each sample and evaluates whether the majority of these neighbors belong to a different class. If the sample is surrounded predominantly by instances of another class, it is removed from the dataset (\cite{wilson1972asymptotic}). This method differs from other under sampling methods as it is often used in addition to another method, such as SMOTE, as a way to denoise the dataset after synthetic samples are introduced. 
+    This method differs from other under-sampling techniques in that it is frequently applied in combination with other approaches, such as SMOTE with the primary purpose to denoise the dataset by removing overlapping samples after synthetic instances have been added, improving classification performance.
+    
+
+    \item \textbf{Condensed Nearest Neighbor:} The Condensed Nearest Neighbor (CNN) method creates a subset, called \textit{Store}, from the original dataset \textit{D}, containing samples of a defined \textit{k} nearest neighbors. The goal is for \textit{Store} to preserve the class distribution of \textit{D}, ensuring that the majority class in \textit{Store} matches that of the original dataset. If this condition is not met, new samples are iteratively added to \textit{Store} until consistency is achieved, or all samples from \textit{D} have been included, effectively making \textit{Store} identical to \textit{D} (\cite{hart1968condensed}).
+
+    
+    \item \textbf{Tomek’s Links:} This method identifies pairs of samples from different classes that are each other’s nearest neighbors, with their proximity suggesting that they lie near the decision boundary. These instances are typically difficult for classifiers to distinguish correctly, as they often represent ambiguous regions between classes. By removing the majority sample or both samples in a Tomek Link pair, the method helps to clean the dataset and create a clearer separation between classes (\cite{Tomek1976}). 
+    
+    Tomek’s Link assumes a binary dataset structure, limiting its effectiveness in multi-class contexts. To address this, different methods to adapt Tomek's Link for multi-class and multi-label datasets have been developed, as an example, an study by \cite{PEREIRA202095} proposed the \textit{Multi-Label Tomek Link} (MLTL), a method that can function as either an undersampling technique or a post-processing cleaning step for multi-class datasets. It uses a \textit{MeanIR} metric to identify majority class samples for removal and the \textit{Adjusted Hamming Distance} to measure dissimilarities between neighboring label sets. A dynamic threshold (\textit{TH}) based on the \textit{MeanIR} defines how distinct two instances must be to form a Tomek Link, with lower thresholds applied to more imbalanced datasets.
+
+\end{itemize}
+
+The application of under sampling methods can improve classification by reducing dataset size and computational load, which can lead to faster training and simplified model structures. However, these methods also pose risks, particularly the occurrence of \textit{underfitting}, where excessive data removal oversimplifies the dataset, preventing the model from generalizing efficiently and resulting in low accuracy on both training and unseen data (\cite{IBM2025_underfitting}). For this reason, under sampling is commonly combined with other balancing techniques, serving as a post-processing step to remove noisy samples near class boundaries, to enhancing dataset quality and improving model performance.
+
+
+\subsubsection{Combined Methods}
+
+Combined methods that integrate both over sampling and under sampling techniques can also be applied to achieve a more balanced and cleaner dataset. In such approaches, over-sampling is first used to generate synthetic samples and increase minority class representation. Subsequently, an under-sampling method is applied to eliminate potential noise introduced during the over-sampling phase and to refine class boundaries. This sequential process helps maintain diversity within minority classes while preventing overfitting and improving the overall performance within certain contexts. (\cite{Rendon2020}).
+
+One combination, \textit{SMOTE+Tomek's Link} (\cite{zeng7563084}) applied in the preprocessing step uses SMOTE to generate synthetic samples for the minority class and removes borderline instances using Tomek’s Link. This combination preserves class boundaries and yields higher evaluation metrics than methods without preprocessing or those applying only SMOTE.
+
+Another approach, \textit{RFMSE} (\cite{XU2020103465}) used with the Random Forest classification algorithm, combines a modified version of SMOTE, called \textit{M-SMOTE}, to dynamically adjust the oversampling process. Instead of relying solely on the imbalance ratio, M-SMOTE uses the misclassification rate from Random Forest to determine the number of synthetic samples to generate. After oversampling, the \textit{Edited Nearest Neighbor} (ENN) method is applied to remove majority class samples if the classification evaluation of the oversampled dataset does not achieve satisfactory balance. This adaptive mechanism allows RFMSE to optimize sample generation and data cleaning simultaneously, resulting in improved performance shown compared to conventional resampling techniques.
+
+Experimental results for other hybrid approaches presented in multiple studies, such as SMOTE+ENN* (\cite{Rendon2020}), SMOTE-RSB (\cite{Ramentol2012}) and NCL+A-SUWO (\cite{Choirunnisa8864335}) among others, indicate that across various domains and dataset configurations, the use of combined sampling strategies often yields noticeable improvements in both efficiency and predictive accuracy when compared to isolated over or under sampling methods.
+
+
+\subsection{Algorithmic Level Approaches}
+
+\subsection{Cost Sensitive Approaches}
+
+Cost sensitive methods for
+
+\subsection{Ensemble Learning Approaches}
+
+
+\section{Model Training}
+
+\section{Analysis Metrics}
