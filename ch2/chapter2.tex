@@ -14,7 +14,22 @@ The first section presents a general review of the literature to explore the imp
 
 % Give examples in professional context on the impact of the issue
 
-% Talk about overfitting and underfitting
+This section analyzes several studies addressing multi-class problems across different professional contexts. It aims to present various approaches for handling these issues in datasets with distinct characteristics to highlight the advantages of using a recommendation tool to select suitable combinations of balancing methods and classification algorithms.
+
+
+A study by \cite{Iqbal2023} addresses the challenge of significant class imbalance in datasets used for deep learning models that predict disease indicators from X-ray and CT images. It emphasizes the importance of accurately identifying minority classes, as disease detection is the primary objective of such models. The researchers employed the SVM classification algorithm (see Section to categorize images in clustering and introduced a resampling technique named Three-Phase Dynamic Learning (3PDL),to handle class imbalance, combined with a parallel CNN model. The approach achieved an F1 score of 96.83 and a precision score of 96.87, demonstrating strong performance for the trained model.
+
+Another study by \cite{abdelkhalek2023addressing} addresses the class imbalance issue in Network intrusion detection systems (NIDS) that are utilized in the detection and prevention of malicious attacks on a network. One of NIDS approaches to attack prevention, anomaly-based detection, uses machine learning to detect possible attacks. The study shows improvement in results for ADASYN + Tomek's Link resampling alongside a Multi-layer perceptron (MLP) model for classification that resulted in 99.9\% accuracy and detection rate on multi-class datasets.
+
+A study by \cite{mutanov2021multi} examines sentiment analysis using social media data, where multi-class datasets are often highly imbalanced with a predominance of positive sentiment. The study concludes that, for the characteristics of the dataset analyzed, applying SMOTE and random oversampling in combination with decision tree, logistic regression, and random forest classifiers produced the highest classification scores and significantly improved performance compared to models trained without sampling.
+
+Face recognition is another domain characterized by significant class imbalance. The study by \cite{face8708977} identifies common facial features that dominate datasets compared to less frequent ones and explores the use of Cluster-based Large Margin Local Embedding technique to preserve clear class separation. When combined with  \textit{k}-nearest cluster classifiers, this approach achieved notable performance improvements over existing methods in the area.
+
+The study by \cite{SIDUMO2022101822} investigates the use of multiple bagging and boosting algorithms to evaluate model performance on ecological datasets with class imbalance involving various fish species. The results, assessed using recall and F1-scores, indicate that bagging classifiers such as random forest and bagCART (bagging classification trees) performed well on imbalanced data, whereas some boosting classifiers like bootCART (boosting classification trees) and AdaBoost produced weaker results and required resampling to improve performance.
+
+A broader study by \cite{haixiang2017review} examined 527 articles related to class imbalance to illustrate the occurrence of rare instances in datasets across diverse fields, including chemical engineering, financial management, industrial manufacturing, and information technology. The study provides insights into how different disciplines address imbalance: chemical and biomedical engineering often apply ensemble classifiers with resampling, financial and management fields tend to use cost-sensitive learning instead of resampling, and information technology typically requires extensive data cleaning due to the complexity and unstructured nature of its data.
+
+These studies indicate that multi-class imbalance affects model training across a wide range of contexts, reducing performance. Datasets from different domains exhibit distinct characteristics and achieve better results through varied balancing and classification methods, highlighting the potential value of developing a recommendation tool for managing class imbalance.
 
 \section{Classification}
 
