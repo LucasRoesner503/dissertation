@@ -23,13 +23,37 @@ Another study by \cite{abdelkhalek2023addressing} addresses the class imbalance 
 
 A study by \cite{mutanov2021multi} examines sentiment analysis using social media data, where multi-class datasets are often highly imbalanced with a predominance of positive sentiment. The study concludes that, for the characteristics of the dataset analyzed, applying SMOTE and random oversampling in combination with decision tree, logistic regression, and random forest classifiers produced the highest classification scores and significantly improved performance compared to models trained without sampling.
 
-Face recognition is another domain characterized by significant class imbalance. The study by \cite{face8708977} identifies common facial features that dominate datasets compared to less frequent ones and explores the use of Cluster-based Large Margin Local Embedding technique to preserve clear class separation. When combined with  \textit{k}-nearest cluster classifiers, this approach achieved notable performance improvements over existing methods in the area.
+%Face recognition is another domain characterized by significant class imbalance. The study by \cite{face8708977} identifies common facial features that dominate datasets compared to less frequent ones and explores the use of Cluster-based Large Margin Local Embedding technique to preserve clear class separation. When combined with  \textit{k}-nearest cluster classifiers, this approach achieved notable performance improvements over existing methods in the area.
+
+\cite{YUAN2018160} proposes a stratified undersampling method used with a variation of AdaBoost across 11 datasets from different contexts to show improvement over existing approaches.
 
 The study by \cite{SIDUMO2022101822} investigates the use of multiple bagging and boosting algorithms to evaluate model performance on ecological datasets with class imbalance involving various fish species. The results, assessed using recall and F1-scores, indicate that bagging classifiers such as random forest and bagCART (bagging classification trees) performed well on imbalanced data, whereas some boosting classifiers like bootCART (boosting classification trees) and AdaBoost produced weaker results and required resampling to improve performance.
 
+\begin{table}
+\caption{Summary of studies, dataset areas, classification algorithms, and class balancing methods.}
+\label{tab:study_summary}
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{l l l l}
+\toprule
+\tabhead{Study} & \tabhead{Area} & \tabhead{Classification Algorithm} & \tabhead{Class Balancing Method} \\
+\midrule
+Iqbal et al. (2023) & Medical imaging & SVM + CNN & Under-sampling \\
+Abdelkhalek et al. (2023) & Network intrusion detection & MLP & Hybrid sampling \\
+Mutanov et al. (2021) & Sentiment analysis & DT, LR, RF & Over-sampling \\
+%Face recognition study & Face recognition & k-nearest cluster classifiers & Cluster-based Large Margin Local Embedding \\
+Sidumo et al. (2022) & Ecological monitoring & RF, bagCART, bootCART, AdaBoost & Various Resampling Methods \\ 
+Yuan et al. (2018) & Multiple domains & AdaBoost variant & Stratified undersampling \\
+\bottomrule\\
+\end{tabular}
+}
+\end{table}
+
+
+
 A broader study by \cite{haixiang2017review} examined 527 articles related to class imbalance to illustrate the occurrence of rare instances in datasets across diverse fields, including chemical engineering, financial management, industrial manufacturing, and information technology. The study provides insights into how different disciplines address imbalance: chemical and biomedical engineering often apply ensemble classifiers with resampling, financial and management fields tend to use cost-sensitive learning instead of resampling, and information technology typically requires extensive data cleaning due to the complexity and unstructured nature of its data.
 
-These studies indicate that multi-class imbalance affects model training across a wide range of contexts, reducing performance. Datasets from different domains exhibit distinct characteristics and achieve better results through varied balancing and classification methods, highlighting the potential value of developing a recommendation tool for managing class imbalance.
+These studies indicate that multi-class imbalance affects model training across a wide range of contexts, reducing performance. As Table \ref{tab:study_summary} demonstrates, datasets from different domains exhibit distinct characteristics and achieve better results through varied balancing and classification methods, highlighting the potential value of developing a recommendation tool for managing class imbalance.
 
 \section{Classification}
 
@@ -39,24 +63,29 @@ These studies indicate that multi-class imbalance affects model training across 
 
 Classification in machine learning refers to the application of supervised learning algorithms that group data into predefined classes based on shared characteristics (\cite{IBM2025_classificationML}). These algorithms use labeled training data to predict unseen instances with similar features, supporting tasks such as image recognition, sentiment analysis, and domain-specific applications in finance and healthcare among others.
 
-For example, consider a dataset containing banking transaction records. To train a model, the data is first preprocessed to address imbalance issues, such as generating additional samples for underrepresented classes like fraudulent transactions and removing overrepresented ones such as common payments, while preserving class boundaries as explained in Section \ref{chap:Chapter2:classImbalanceProblems}. The processed dataset is then used in a supervised classification method that groups similar samples into labeled categories. After training, the model learns to recognize data patterns associated with specific labels and can assign appropriate labels to new, unseen transactions, such as recognizing new fraudulent transaction attemps (\cite{ChakrabortyDey2024}).
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{ch2/assets/ClassificationDiagram.png}
+    \caption[Taxonomy-of-imbalance-learning-techniques]{Classification Process.}
+    \label{fig:classification-process}
+\end{figure}
+
+For example, consider a dataset containing banking transaction records. To train a model, the data is first preprocessed to address imbalance issues, such as generating additional samples for underrepresented classes like fraudulent transactions and removing overrepresented ones such as common payments, while preserving class boundaries as explained in Section \ref{chap:Chapter2:classImbalanceProblems}. The processed dataset is then used in a supervised classification method that groups similar samples into labeled categories. After training, the model learns to recognize data patterns associated with specific labels and can assign appropriate labels to new, unseen transactions, such as recognizing new fraudulent transaction attempts (\cite{ChakrabortyDey2024}).
+
+In machine learning, classification is defined by the number of labels a model can predict. When only two labels are possible, such as yes and no or positive and negative, the task is binary classification. When the output can take more than two labels, the task is multi-class classification.
+
+Within multi-class classification, tasks can be further divided into single-label and multi-label categories. In single-label classification, a model assigns only one class from the set of possible values to each unseen instance. In multi-label classification, each instance can be assigned multiple classes simultaneously.
+
+The following subsections examine common classification algorithms and their application in multi-class classification tasks.
 
 
+\subsection{Support Vector Machine Classification}
 
+\subsection{Decision Tree Classification}
 
-\subsection{Multi-Class Single Label Classification}
+\subsection{Convolutional Neural Network}
 
-% Explain how this works, mention examples and how they can be applied, show what situations can be applicable here.
-
-% talk about neural network, one versus all, mention softmax in those cases, explain why its' specific to single label (assumes just one label)
-
-% expand on neural network, naive, svm and decision tree for multi class classification
-
-\subsection{Multi-Class Multiple Label Classification}
-
-% Explain how this works, mention examples and how they can be applied, show what situations can be applicable here.
-
-% show and explain how reworked versions of common algorithmns can be used for multi label
+\subsection{Naive Bayes}
 
 
 \section{Class Imbalance problems}
@@ -145,7 +174,10 @@ Cost sensitive methods for
 
 \subsection{Ensemble Learning Approaches}
 
+\subsection{Multi Class Decomposition Approaches}
 
-\section{Model Training}
+%talk about OVO, OVA and variations, explain the need to decompose a multi-class issue into multiple binary ones. (What makes multi-class imbalanced problems difficult? An experimental study) lango2022
+
+\section{Meta-learning approaches for method recommendation}
 
 \section{Analysis Metrics}
