@@ -81,6 +81,31 @@ The following subsections examine common classification algorithms and their app
 
 \subsection{Support Vector Machine Classification}
 
+Support Vector Machine (SVM) is a classification algorithm used in supervised machine learning that has the main objective of creating a separation line (i.e. Hyperplane) to create a boundary between different classes in the data, allowing classification errors to be minimized and retain better generalization (\cite{CERVANTES2020189}).
+
+For linear binary datasets, the optimal hyperplane for an SVM is the one that maximizes the margin. The margin is defined by the support vectors, which are the samples closest to the hyperplane on each side. The region between the lines that pass through these support vectors and run parallel to the hyperplane represents the margin.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[]{ch2/assets/svmhyperplane.png}
+    \caption[SVM Hyperplane]{SVM Hyperplane (\cite{MathWorks_SVM_image})}
+    \label{fig:svm-hyperlane}
+\end{figure}
+
+If a hyperplane cannot perfectly separate the two classes, a \textit{slack} variable is introduced to allow limited misclassification under a soft-margin formulation. This approach seeks the widest feasible margin while permitting violations when strict separation is not achievable. The \textit{C} parameter regulates this balance by controlling how strongly misclassified samples influence the objective. Higher values enforce tighter fitting with reduced tolerance for errors, while lower values allow a broader margin with increased flexibility (\cite{burges1998tutorial}).
+
+For non-linear datasets, SVM uses kernel functions that map samples into a feature space where a separating hyperplane can be defined. The kernel transforms the data into a representation that supports linear separation. Several kernels are used depending on the scenario, including the linear kernel, the polynomial kernel, and the radial basis function kernel (\cite{GeeksforGeeks_SVM}).
+
+SVM was originally designed for binary tasks. For multi-class classification, adaptations transform the problem into several binary decisions. Two common adaptations are one-versus-one (OVO) and one-versus-all (OVA).
+
+\subsubsection{One-Versus-One}
+
+In one-versus-one, a separate hyperplane is trained for every pair of classes selected from the \textit{N} classes in the dataset. Each pair forms a binary classifier, and all classifiers participate in the final decision. A voting scheme such as max-wins is used, where each classifier contributes one vote to its predicted class, and the class with the highest vote count is selected. When a tie occurs, a decision function assigns a score to each class to resolve the tie (\cite{debnath2004decision}).
+
+\subsubsection{One-Versus-All}
+
+In comparison, the one-versus-all approach creates N classifier where N is the number of classes in the dataset, for each classifier, the Nth class is treated as the positive class, while all other classes are treated as the negative class. A decision function is utilize to assign a value to a prediction (positive if it likely belongs to the positive class of the classifier or negative if it doesn't), the classifier with highest value determines the class.
+
 \subsection{Decision Tree Classification}
 
 \subsection{Convolutional Neural Network}
