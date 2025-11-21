@@ -8,7 +8,7 @@
 
 For the \textit{State of the art} chapter, an extensive examination of studies related to multiclass imbalance in machine learning was conducted. From this review four topics of significance were identified, each worthy of a dedicated section. Each section provides an introduction to the topic and explores its relevance to multiclass imbalance training.
 
-The first section presents a general review of the literature to explore the impact and reach of multi-class imbalance in real world scenarios. The second section addresses Class Imbalance problems, detailing how imbalance-related challenges affect predictive accuracy and discussing various balancing strategies and techniques designed to mitigate these issues. The third section focuses on classification itself, explaining how models perform classification tasks, the main types of classification algorithms, and the algorithms most commonly applied in multiclass settings. The final section examines evaluation metrics, emphasizing the importance of the confusion matrix and discussing how multiple metrics should be applied to accurately interpret the results of models trained on multiclass imbalanced datasets.
+The first section presents a general review of the literature to explore the impact and reach of multi-class imbalance in real world scenarios. The second section focuses on classification itself, explaining how models perform classification tasks, the main types of classification algorithms, and the algorithms most commonly applied in multiclass settings. The third section addresses Class Imbalance problems, detailing how imbalance-related challenges affect predictive accuracy and discussing various balancing strategies and techniques designed to mitigate these issues. A fourth section will tackle different meta-learning approaches for method recommendation. The final section examines evaluation metrics, describing common metrics used in the evaluation of multi-class classification and discussing how multiple metrics should be applied to accurately interpret the results of models trained on multiclass imbalanced datasets.
 
 \section{Review of the Literature}
 
@@ -106,11 +106,81 @@ In one-versus-one, a separate hyperplane is trained for every pair of classes se
 
 In comparison, the one-versus-all approach creates N classifier where N is the number of classes in the dataset, for each classifier, the Nth class is treated as the positive class, while all other classes are treated as the negative class. A decision function is utilize to assign a value to a prediction (positive if it likely belongs to the positive class of the classifier or negative if it doesn't), the classifier with highest value determines the class (\cite{Wei991427}).
 
+\paragraph{} %Move out of subsubsection
+
+The SVM algorithm presents several advantages compared to other approaches \cite{GeeksforGeeks_SVM}. It can handle non-linear data through kernel functions, manage outliers with the soft-margin formulation, adapt to multi-class tasks through one-versus-one and one-versus-all, and maintain strong performance in high-dimensional spaces, which supports applications such as image classification and gene expression.
+The algorithm also presents disadvantages, including slow training on large datasets and increased complexity when tuning parameters such as the kernel choice or the C value for the soft margin. Noise can also create difficulties, since samples located near other classes make the hyperplane harder to define.
+
 \subsection{Decision Tree Classification}
 
-\subsection{Convolutional Neural Network}
+Decision Tree is a classification algorithm that uses a rooted tree in which each leaf represents a class and each internal node corresponds to an attribute with an associated threshold (\cite{neelamegam2013classification}).Samples move through the tree by evaluating the attribute at each node and following the appropriate child based on the threshold. The goal is for each sample to traverse the nodes until it reaches a leaf, where it is assigned a class.  A leaf is created when the samples reaching that point meet a predefined stopping criterion (such as a maximum depth or a minimum set of samples per leaf before it can be split) and align with a specific class. Fig \ref{fig:Decision-tree-illustration} demonstrate a visual representation of a decision tree with it's nodes and leaf nodes.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{ch2/assets/Decision-tree-illustration.jpg}
+    \caption[Decision Tree illustration]{Decision Tree illustration (\cite{saputra2023})}
+    \label{fig:Decision-tree-illustration}
+\end{figure}
+
+\subsubsection{ID3 and C4.5}
+
+Iterative Dichotomiser 3 is a simple implementation of the decision tree algorithm, where a top-down greedy search is applied to a sample data that goes over the tests in each node until it arrives at the leaf. ID3 distinguishes itself by its method for selecting attributes for each decision node, using information gain to determine which attribute best separates the classes (\cite{kotsiantis2013decision}).
+
+ID3 can suffer from reduced accuracy when datasets contain significant noise, requiring data preprocessing prior to use. The C4.5 algorithm addresses this issue by introducing pruning, which replaces branches and nodes that do not improve classification with leaf nodes, producing more generalized and robust decision trees. C4.5 can also handle training data with missing attribute values by ignoring missing entries when calculating information gain (\cite{priyam2013comparative}).
+
+\subsubsection{Classification and Regression Trees (CART)}
+
+CART is a type of decision tree algorithm that can handle both classification and regression tasks. Unlike other approaches, CART employs a binary tree, meaning each node has only two child nodes (\cite{Somvanshi7860040}).
+
+CART uses the Gini index, which measures the impurity of a node by evaluating how often a randomly chosen sample would be incorrectly classified if it were assigned a label according to the distribution of classes in the node (\cite{farris2010gini}). It also applies cost-complexity pruning, which removes branches that provide little improvement in classification accuracy relative to the complexity they add (\cite{Pathak9034296}).
+
+\subsubsection{Random Forests}
+
+Random Forest is a machine learning method that constructs multiple decision trees to reduce correlation among features and improve predictive performance. The algorithm randomly selects both samples and feature subsets for each tree, which decreases tree correlation and mitigates overfitting. This approach allows parallel execution, improving computational efficiency, with a complexity of O(n) relative to the number of training instances (\cite{salman2024random}).
+Once a Random Forest is trained, unseen data is passed through all decision trees in the forest. Each tree produces a classification, and the class receiving the majority of votes across all trees is assigned to the data (\cite{kulkarni2013random}).
+
+\paragraph{} %Move out of subsubsection
+
+A study by \cite{song2015decision} highlights some advantages and disadvantages found in the utilization of Decision Tree algorithms. It notes that the method is simple to understand, does not require parameter tuning, and that it can handle missing values in the dataset. It also identifies limitations, such as issues with generalization that can occur with smaller datasets and how input variables might show strong correlation but that might not translate into an accurate outcome.
+
+
+\subsection{Artificial Neural Network}
+
+ANNs were developed to be similar to a human brain, capable of learning and recognizing new patterns through distributed processing units (i.e. neurons) that operate on numerical inputs and adjust internal parameters during training to solve tasks that involve complex data relationships (\cite{abiodun2018state}). Artificial Neural Network is a common machine learning model used for tasks such as clustering, pattern recognition, and classification among others, although this dissertation will only focus on it's role as a classification algorithm.
+
+As shown in Fig. \ref{fig:Neural-Network-Illustration}, neural networks consist of artificial neurons arranged in layers, including an input layer that receives data, hidden layers that process the information, and an output layer that assigns a class (\cite{islam2019overview}). Each neuron contains weighted inputs, a bias term, and an activation function that transforms the combined input into an output value. Neurons connect to those in adjacent layers through weighted links that represent the strength of each connection and can take positive or negative values.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{ch2/assets/NeuralNetworkImage.jpg}
+    \caption[Neural Network Illustration]{Neural Network Illustration. (\cite{MathWorks_CNN_DiscoveryFig})}
+    \label{fig:Neural-Network-Illustration}
+\end{figure}
+
+
+The simplest implementation of ANN classification is the Feed Forward Neural Network, or FFNN (\cite{qamar2023artificial}). Its main characteristic is that data moves in a single direction through the network, from the input layer to the output layer, without feedback connections. This structure supports supervised learning by updating weights to reduce classification error after each training example, allowing the model to form a stable mapping from inputs to outputs.
+
+\subsubsection{Multilayer Perceptron (MLP)}
+
+The MLP algorithm \cite{chen2021review} follows the basic neural network structure, containing an input layer, one or more hidden layers, and an output layer. It differs from a standard FFNN by implementing both forward and backward propagation. In the forward step, data moves from the input layer to the output layer, producing a prediction. During backward propagation, a loss function quantifies the difference between the predicted and expected values. This loss is then used to adjust the weights of the network in order to minimizing error and improving the model’s mapping of inputs to outputs.
+
+\subsubsection{Convolutional Neural Network (CNN)}
+
+CNNs follow the same general structure as basic neural networks, with input, hidden, and output layers. They also use forward and backward propagation and rely on a loss function to update weights (\cite{Jorgecardete2024_CNNGuide}). They extend this structure by adding convolutional layers and pooling layers that pre-process the data and produce feature maps.
+
+Convolution layers drive CNN operation by applying learnable kernels across the spatial dimensions of the input to generate feature maps. Each kernel moves across local regions and computes element-wise multiplication with the input while sharing weights within a feature map to limit parameters. Output dimensions depend on depth, stride, and zero-padding, which manage boundary handling and control the size of the feature maps (\cite{sakib2019overview}).
+
+The pooling layer (\cite{chen2021review}) is applied after the convolutional layer and reduces the spatial size of the feature maps. This downsampling decreases the number of connections required in subsequent layers and reduces computation. Average pooling replaces a region with its mean, while max pooling replaces the region with its maximum value.
+
+After the convolution and pooling stages, a flattening step converts the reduced feature maps into a one-dimensional vector. This vector serves as input to the fully connected layers, allowing the network to combine the extracted spatial features and produce the final classification output.
 
 \subsection{Naive Bayes}
+
+\subsubsection{Gaussian Naive Bayes}
+
+\subsubsection{Multinomial Naive Bayes}
+
+
 
 
 \section{Class Imbalance problems}
@@ -123,7 +193,7 @@ Class imbalance refers to this unequal representation of classes within a datase
 
 When training classification algorithms, the greater the imbalance, the more difficult it becomes for the model to learn the characteristics of minority classes. Classifiers inherently tend to favor the majority class, leading to biased predictions and reduced accuracy for the minority classes. As a result, the model may fail to correctly identify rare cases, instead assigning most predictions to the majority class. This behavior is particularly problematic in fields where minority classes represent the most critical scenarios, such as the aforementioned bioengineering datasets, where the accurate detection of these rare events such as identifying anomalies or diseases is often the primary objective.
 
-To ensure that classification models produce accurate and unbiased results, various balancing methods have been developed to modify dataset distributions by adding, removing, or adjusting samples. These techniques aim to achieve a more uniform representation of all classes, allowing models to better learn the characteristics of minority classes and improve overall predictive performance. Figure \ref{fig:imbalance-learning-techniques}.  illustrates the different balancing approaches discussed in the following subsections.
+To ensure that classification models produce accurate and unbiased results, various balancing methods have been developed that either modify dataset distributions by adding, removing, or adjusting samples or introduce new classification logic such as cost or boosting. These techniques aim to achieve a more uniform representation of all classes, allowing models to better learn the characteristics of minority classes and improve overall predictive performance. Figure \ref{fig:imbalance-learning-techniques}.  illustrates the different balancing approaches discussed in the following subsections.
 
 \begin{figure}[!htbp]
     \centering
@@ -199,9 +269,7 @@ Cost sensitive methods for
 
 \subsection{Ensemble Learning Approaches}
 
-\subsection{Multi Class Decomposition Approaches}
-
-%talk about OVO, OVA and variations, explain the need to decompose a multi-class issue into multiple binary ones. (What makes multi-class imbalanced problems difficult? An experimental study) lango2022
+XGBoost
 
 \section{Meta-learning approaches for method recommendation}
 
